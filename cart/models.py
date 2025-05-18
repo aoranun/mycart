@@ -7,7 +7,6 @@ class Product(models.Model):
     detail = models.CharField(max_length=1000)
     category = models.CharField(default=None, blank=True)
 
-
 class Customer(models.Model):
     name = models.CharField(max_length=200)
     username = models.CharField(max_length=200)
@@ -21,7 +20,6 @@ class Promotion(models.Model):
     discount_rate = models.IntegerField(default=0)
     detail = models.CharField(max_length=1000)
 
-# Intermediate model to track product quantities in cart
 class CartItem(models.Model):
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
