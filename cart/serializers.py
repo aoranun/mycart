@@ -113,7 +113,7 @@ class CartSerializer(serializers.ModelSerializer):
         return self._calculate_discount(obj)
 
     def get_total_price(self, obj):
-        total = sum(item.total_price for item in obj.items.all())
+        total = Cart.calculate_total(obj)
         discount = self._calculate_discount(obj)
         final_price = total - discount
         return max(round(final_price, 2), Decimal(0))
@@ -122,7 +122,7 @@ class CartSerializer(serializers.ModelSerializer):
         return obj.customer.points if obj.customer else 0
 
     def _calculate_discount(self, cart):
-        total = sum(item.total_price for item in cart.items.all())
+        total = Cart.calculate_total(cart)
         discount = Decimal(0)
 
         for promo in cart.promotions.all():
