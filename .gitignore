@@ -16,10 +16,11 @@ ENV/
 *.log
 *.pot
 *.pyc
-db.sqlite3
+# db.sqlite3
 media/
 staticfiles/
 local_settings.py
+
 
 # VS Code
 .vscode/
