@@ -23,6 +23,7 @@ local_settings.py
 
 
 # VS Code
+.vscode
 .vscode/
 
 # PyCharm
